@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Out</title>
     <style>
         body {
             width: 100vw;
@@ -12,42 +12,57 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         div {
-            align-items: center;
             display: flex;
-            width: 100%;
-            height: 100%;
             justify-content: center;
+            align-items: center;
             flex-direction: column;
             text-align: center;
+            width: 100%;
+            height: 100%;
             box-sizing: border-box;
             background-color: #fcee54;
-            flex-wrap: wrap;
-            transition-duration: 0.7s;
+            transition: background-color 0.7s ease;
         }
 
         button {
-            font-size: 200%;
+            font-size: 2vw;
             background-color: #f5c2e0;
             border-radius: 5px;
             border: none;
-            text-align: center;
+            padding: 10px 20px;
             color: black;
-            font-family: monospace;
             font-weight: bold;
-            transition-duration: 0.3s;
-            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            button {
+                font-size: 5vw;
+                padding: 15px 30px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div>
-        <button type="submit">Sign Out</button>
+        <button type="submit" aria-label="Sign out from the application">Sign Out</button>
     </div>
-    <script src="./popup-sign-out-script.js"></script>
+    <script src="./popup-sign-out.js"></script>
 </body>
 
 </html>

@@ -1,21 +1,24 @@
-// Copyright 2018 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 'use strict';
 
 let changeColor = document.getElementById('changeColor');
 
+// Retrieve the saved color from chrome storage and set the button's background color
 chrome.storage.sync.get('color', function (data) {
-  changeColor.style.backgroundColor = data.color;
-  changeColor.setAttribute('value', data.color);
+  if (data.color) {
+    changeColor.style.backgroundColor = data.color;
+    changeColor.setAttribute('value', data.color);
+  }
 });
 
+// When the button is clicked, change the background color of the active tab
 changeColor.onclick = function (element) {
   let color = element.target.value;
-  console.log(color);
 
-  // chrome.tabs.executeScript(
-  //   tabs[0].id,
-  //   { code: 'document.body.style.backgroundColor = "' + color + '";' });
+  // Change the background color of the active tab
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.executeScript(
+      tabs[0].id,
+      { code: 'document.body.style.backgroundColor = "' + color + '";' }
+    );
+  });
 };

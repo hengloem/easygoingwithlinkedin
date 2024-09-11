@@ -4,71 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign In</title>
     <style>
         body {
-            width: 500px;
-            height: 500px;
+            width: 450px;
+            height: 450px;
             margin: 0;
             padding: 0;
-            overflow: hidden;
-        }
-
-        form {
-            align-items: center;
             display: flex;
-            width: 100%;
-            height: 100%;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        form {
+            display: flex;
             flex-direction: column;
-            text-align: center;
-            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
             background-color: #fcee54;
-            flex-wrap: wrap;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         input {
-            margin: 10px;
-            font-size: 120%;
-            width: 75%;
-            height: 5%;
+            margin: 10px 0;
+            font-size: 16px;
             padding: 10px;
-            border: none;
-            font-family: monospace;
-            transition-duration: 0.3s;
+            width: 80%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         input:focus {
-            transform: scale(1.2);
+            transform: scale(1.05);
+            background-color: #fffbe0;
+            border-color: #888;
+            outline: none;
         }
 
         button {
-            font-size: 200%;
+            font-size: 18px;
             background-color: #f5c2e0;
             border-radius: 5px;
             border: none;
-            text-align: center;
+            padding: 10px 20px;
+            margin-top: 10px;
             color: black;
-            font-family: monospace;
-            font-weight: bold;
-            transition-duration: 0.3s;
-            padding: 10px;
-            margin-top: 1%;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #d28bb0;
+            transform: scale(1.05);
         }
 
         .white_placeholder::placeholder {
             color: white;
         }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            body {
+                height: 100%;
+            }
+
+            form {
+                width: 90%;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <form>
-        <input type="email" name="email" id="email" placeholder="Email">
-        <input type="password" name="password" id="password" placeholder="Password">
+    <form id="sign-in-form">
+        <input type="email" name="email" id="email" placeholder="Email" aria-label="Email" required>
+        <input type="password" name="password" id="password" placeholder="Password" aria-label="Password" required>
         <button type="submit">Sign In</button>
     </form>
-    <script src="./popup-sign-in-script.js"></script>
+    <script src="./popup-sign-in.js"></script>
 </body>
 
 </html>
